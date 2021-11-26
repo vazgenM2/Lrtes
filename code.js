@@ -354,27 +354,37 @@ document.querySelector('.start-btn').addEventListener('click', () => {
         gameSettings.unknowns = +document.querySelector('.unknowns').value || 0
 
         let randomNum = Math.floor(Math.random() * words.length - 1)
-
         gameSettings.word = words[randomNum]
-
-        document.querySelector('.word').innerHTML = gameSettings.word
 
         document.querySelector('.home').style.display = 'none'
         document.querySelector('.board').style.display = 'flex'
 
         gameSettings.steps.length = gameSettings.players
         gameSettings.steps.fill(0)
-        function randomOrder() {
-            for (let i = 0; i < gameSettings.unknowns; i++) {
-                gameSettings.steps[i] = 'Լրտես 🤐'
+        function randomOrder(steps) {
+            let arr = Array(gameSettings.players)
+            for (let i = 0; i < gameSettings.players; i++) {
+                arr[i] = i + 1
             }
+            let obj = {}
+            for (let i = 0; i < gameSettings.unknowns; i++) {
+                obj[i + 1] = 'unknown'
+            }
+            arr.sort(() => Math.random() - 0.5)
+            arr.forEach((item, i) => {
+                if (Object.keys(obj).includes(String(item))) arr[i] = 'Լրտես 🤐'
+            })
+            steps = [...arr]
+            return steps
         }
-        function func(a, b) {
-            return Math.random() - 0.5;
-        }
-        gameSettings.steps.sort(func)
-        randomOrder()
+        gameSettings.steps = randomOrder(gameSettings.steps)
         console.log(gameSettings.steps)
+
+        if (typeof gameSettings.steps[gameSettings.players - 1] != 'number') {
+            document.querySelector('.word').innerHTML = gameSettings.steps[gameSettings.players - 1]
+        }
+        else document.querySelector('.word').innerHTML = gameSettings.word
+
         gameSettings.players--
     }
 })
@@ -417,7 +427,11 @@ document.querySelector('.open-close-word').addEventListener('click', () => {
             document.querySelector('.start').style.display = 'block'
         }
     } else if (gameSettings.players) {
-        document.querySelector('.word').innerHTML = gameSettings.word
+        if (typeof gameSettings.steps[gameSettings.players - 1] != 'number') {
+            document.querySelector('.word').innerHTML = gameSettings.steps[gameSettings.players - 1]
+        }
+        else document.querySelector('.word').innerHTML = gameSettings.word
+
         document.querySelector('.open-close-word').innerHTML = 'Փակել'
         gameSettings.players--
     }
