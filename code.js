@@ -378,7 +378,6 @@ document.querySelector('.start-btn').addEventListener('click', () => {
             return steps
         }
         gameSettings.steps = randomOrder(gameSettings.steps)
-        console.log(gameSettings.steps)
 
         if (typeof gameSettings.steps[gameSettings.players - 1] != 'number') {
             document.querySelector('.word').innerHTML = gameSettings.steps[gameSettings.players - 1]
@@ -394,9 +393,9 @@ document.querySelector('.restart').addEventListener('click', () => {
     document.querySelector('.home').style.display = 'flex'
     document.querySelector('.board').style.display = 'none'
 
-    document.querySelector('.time').value = ''
-    document.querySelector('.players').value = ''
-    document.querySelector('.unknowns').value = ''
+    // document.querySelector('.time').value = ''
+    // document.querySelector('.players').value = ''
+    // document.querySelector('.unknowns').value = ''
 
     document.querySelector('.start').style.display = 'none'
     document.querySelector('.open-close-word').style.display = 'block'
@@ -405,6 +404,7 @@ document.querySelector('.restart').addEventListener('click', () => {
     clearInterval(t)
 
     document.querySelector('.open-close-word').innerHTML = 'Փակել'
+    document.querySelector('.last-word').innerHTML = gameSettings.word
     showWord = true
     gameSettings = {
         time: 0,

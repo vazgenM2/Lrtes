@@ -34,6 +34,7 @@
 		background-color: #152D33;
 		padding: 20px;
 		display: flex;
+		position: relative;
 		flex-direction: column;
 		min-height: 400px;
 		overflow: hidden;
@@ -175,6 +176,19 @@
 		font-weight: bold;
 	}
 
+	.last-word-text {
+		position: absolute;
+		bottom: 15px;
+		left: 15px;
+		font-size: 15px;
+		color: #ffffff95;
+	}
+
+	.last-word-text .last-word {
+		font-style: italic;
+		color: #fff;
+	}
+
 	@media (max-width: 370px) {
 		.title {
 			font-size: 30px;
@@ -210,6 +224,7 @@
 			</div>
 		</div>
 		<button class="start-btn">Սկսել</button>
+		<span class="last-word-text">Վերջին բառը։ <span class="last-word">-</span></span>
 	</div>
 
 	<div class="board">
