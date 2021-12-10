@@ -194,6 +194,10 @@
 		color: #fff;
 	}
 
+	#topic {
+		margin-left: 30px;
+	}
+
 	@media (max-width: 370px) {
 		.title {
 			font-size: 30px;
@@ -226,6 +230,17 @@
 			<div>
 				<label class="emoji">🤐</label>
 				<input type="number" placeholder="Լրտեսների քանակ" class="input unknowns">
+			</div>
+			<div>
+				<label class="topic">Թեմա</label>
+				<select name="topic" id="topic">
+					<option value="all">Բոլոր</option>
+					<option value="items">Առօրյա բառեր</option>
+					<option value="names">Հայտնի մարդիկ</option>
+					<option value="football">Ֆուտբոլ</option>
+					<option value="company">Կազմակերպություներ</option>
+					<option value="geography">Աշխարհագրություն</option>
+				</select>
 			</div>
 			<div>
 				<input type="checkbox" class="random-unknowns" />
