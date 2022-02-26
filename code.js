@@ -494,7 +494,7 @@ document.querySelector('.start').addEventListener('click', () => {
 
 // ============ Random unknowns mode function
 function randomUnknownsCount() {
-    if (document.querySelector('.random-unknowns').checked || document.querySelector('.unknowns').value == '') {
+    if (document.querySelector('.unknowns').value == '') {
         let secretCount = randomIntFromInterval(1, Math.floor(+document.querySelector('.players').value / 2))
         gameSettings.unknowns = secretCount
     }
