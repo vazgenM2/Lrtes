@@ -444,7 +444,7 @@ document.querySelector('.open-close-word').addEventListener('click', () => {
         }
     } else if (gameSettings.players) {
         if (typeof gameSettings.steps[gameSettings.players - 1] != 'number') {
-            document.querySelector('.word').innerHTML = gameSettings.steps[gameSettings.players - 1]
+            document.querySelector('.word').innerHTML = gameSettings.steps[gameSettings.players - 1] + `\n (Լրտեսները - ${gameSettings.unknowns})`
         }
         else document.querySelector('.word').innerHTML = gameSettings.word
 
